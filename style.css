@@ -1,0 +1,79 @@
+/* Regole in comune */
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.container{
+    max-width: 1180px;
+    margin: 0 auto;
+}
+
+.mt-50{
+   margin-top: 50px;
+}
+
+.d-flex {
+    display: flex;
+    
+}
+.justify-center{
+    justify-content: center;
+}
+
+/* Regole per header */
+
+/* Parte superiore */
+.header-top{
+    padding:20px 0 ;
+    
+}
+
+.title h1{
+    color:#29b1dd;
+    font-size: 60px;
+}
+
+/* Parte inferiore */
+.header-bottom{
+    background-color: #29b1dd;
+    padding: 30px 0;
+    
+}
+.header-bottom .container h2{
+    color:#fff;
+    text-transform: uppercase;
+    margin-right: 20px;
+}
+
+/* Regole main */
+
+#container-icons{
+    display: flex;
+    flex-wrap: wrap;
+    
+    
+}
+
+.icon{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: calc( 100% / 5 - 20px);
+    margin: 10px 10px;
+    border: 1px solid black;
+    border-radius: 20px;
+    font-size: 50px;
+    box-shadow: 3px 3px #888888;
+}
+
+i{
+    padding: 10px 0;
+}
+.icon-text{
+    font-size: 16px;
+    text-transform: uppercase;
+}
