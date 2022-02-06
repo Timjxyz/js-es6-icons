@@ -53,7 +53,7 @@
 #container-icons{
     display: flex;
     flex-wrap: wrap;
-    
+   
     
 }
 
@@ -76,4 +76,16 @@ i{
 .icon-text{
     font-size: 16px;
     text-transform: uppercase;
+}
+
+.btn-dinamico{
+    display: flex;
+    justify-content: center;
+}
+#btn{
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    background-color: purple;
+    color: #fff;
 }
