@@ -114,33 +114,12 @@ icons=[
 ];
 
 const containerIcons= document.getElementById('container-icons');
-let selector = document.getElementById('type-select');
+const selector = document.getElementById('type-select');
 let btnColor=document.getElementById('btn');
 
 drawIcons(containerIcons, icons);
 
-//Cambio di colore di tutte le icone in base al click
-btnColor.addEventListener('click',
-	function(){
-		
-		
-		let content = '';
-		
-		icons.forEach(oggetto => {
-			itemColor='#'+ hexColour(getRandomNumber(0, 255),getRandomNumber(0, 255),getRandomNumber(0, 255));
-
-
-			content += `<div class="icon">
-							<i style="color: ${itemColor};" class="${oggetto.family} ${oggetto.prefix}${oggetto.name}"></i>
-							<div class="icon-text">${oggetto.name}</div>
-						</div>`;
-		});
-					
-					console.log(content)
-		
-					containerIcons.innerHTML=content
-	}
-)
+createSelection(selector, icons)
 
 //Filtro gli elementi in base all'opzione
 selector.addEventListener('change', function() {
@@ -162,14 +141,8 @@ selector.addEventListener('change', function() {
     }
 });
 
-//creo i valori della select
-let valueSelect=selector.value;
 
-valueSelect+=`  <option value="">All</option>
-				<option value="animal">Animal</option>
-				<option value="vegetable">Vegetable</option>
-				<option value="user">User</option>`;
-selector.innerHTML+= valueSelect
+
 
 //Funzione per creare icone all'interno del container
 function drawIcons(container, icons) {
@@ -177,7 +150,7 @@ function drawIcons(container, icons) {
     let content = '';
 
     icons.forEach(oggetto => {
-
+		//oggetto.color=randomColor()
         content += `<div class="icon">
 						<i style="color: ${oggetto.color};" class="${oggetto.family} ${oggetto.prefix}${oggetto.name}"></i>
 						<div class="icon-text">${oggetto.name}</div>
@@ -187,25 +160,32 @@ function drawIcons(container, icons) {
     container.innerHTML = content;
 
 }
+  
+//Genera colori casuali hex
+function randomColor(){
+	let hex='012356789abcdef';
 
-function hexColour(c,a,b) {
-	let valore;
-	let valore2;
-	let valore3;
-	let risultato;
-	if (c < 256 && a<256 && b<256) {
-	  valore= Math.abs(c).toString(16);
-	  valore2= Math.abs(a).toString(16);
-	  valore3= Math.abs(b).toString(16);
-	  risultato=valore+valore2+valore3
-	  return risultato;
+	let color='';
+	for(let i =0 ;i<6; i++){
+		color+=hex[Math.floor(Math.random() * hex.length)];
 	}
-	
-}
-  
- 
 
-  function getRandomNumber(min, max){
-    return Math.floor(Math.random() * (max - min +1)) + min;
+	return '#'+ color;
 }
-  
+
+//creazione delle option delle select
+function createSelection (container,array){
+	const types=['all'];
+
+	array.forEach(value=>{
+		if(!types.includes(value.type)){
+			types.push(value.type);
+		}
+	});
+
+	types.forEach(value=>{
+		let option=`<option value="${value}">${value}</option>`;
+
+		container.innerHTML+=option;
+	})
+}
