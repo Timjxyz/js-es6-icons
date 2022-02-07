@@ -114,7 +114,9 @@ icons=[
 ];
 
 const containerIcons= document.getElementById('container-icons');
+
 const selector = document.getElementById('type-select');
+
 let btnColor=document.getElementById('btn');
 
 drawIcons(containerIcons, icons);
